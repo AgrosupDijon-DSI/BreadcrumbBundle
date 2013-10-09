@@ -1,0 +1,27 @@
+{
+    "name":         "cnerta/breadcrumb-bundle",
+    "description":  "This bundle provides a breadcrumb for the KnpMenu library",
+    "keywords":     ["menu"],
+    "type":         "symfony-bundle",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "cnerta",
+            "homepage": "http://www.cnerta.educagri.fr/"
+        },
+        {
+            "name":     "Valérian Girard",
+            "email":    "valerian.girard@gmail.com"
+        }
+    ],
+    "require":      {
+        "knplabs/knp-menu":         "~2.0, >=2.0.0-beta1",
+        "symfony/framework-bundle": "~2.0"
+    },
+    "autoload":     {
+        "psr-0": { "Cnerta\\BreadcrumbBundle": "" }
+    },
+    "target-dir": "Cnerta/BreadcrumbBundle",
+    
+    "minimum-stability": "dev"
+}
