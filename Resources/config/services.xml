@@ -17,6 +17,7 @@
         <service id="cnerta_breadcrumb.helper" class="%cnerta_breadcrumb.twig.helper.class%">
             <argument type="service" id="cnerta_breadcrumb.renderer_provider" />
             <argument type="service" id="knp_menu.menu_provider" />
+            <argument type="service" id="knp_menu.matcher" />
         </service>
 
         <service id="cnerta_breadcrumb.twig.extension" class="%cnerta_breadcrumb.twig.extension.class%">

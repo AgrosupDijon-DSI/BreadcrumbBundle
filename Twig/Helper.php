@@ -2,10 +2,16 @@
 
 namespace Cnerta\BreadcrumbBundle\Twig;
 
+use RecursiveIteratorIterator;
+use ArrayIterator;
+use Knp\Menu\Iterator\RecursiveItemIterator;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Renderer\RendererProviderInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
+use Knp\Menu\Iterator\CurrentItemFilterIterator;
 use Knp\Menu\Util\MenuManipulator;
+use Knp\Menu\Matcher\Matcher;
+
 
 /**
  * Helper class containing logic to retrieve and render breadcrumb from templating engines
@@ -23,13 +29,21 @@ class Helper
     protected $menuManipulator;
 
     /**
-     * @param RendererProviderInterface  $rendererProvider
-     * @param MenuProviderInterface|null $menuProvider
+     * @var \Knp\Menu\Matcher\Matcher
      */
-    public function __construct(RendererProviderInterface $rendererProvider, MenuProviderInterface $menuProvider = null)
+    protected $matcher;
+
+   /**
+    *
+    * @param \Knp\Menu\Renderer\RendererProviderInterface $rendererProvider
+    * @param \Knp\Menu\Provider\MenuProviderInterface $menuProvider
+    * @param \Knp\Menu\Matcher\Matcher $matcher
+    */
+    public function __construct(RendererProviderInterface $rendererProvider, MenuProviderInterface $menuProvider = null, Matcher $matcher)
     {
         $this->rendererProvider = $rendererProvider;
         $this->menuProvider = $menuProvider;
+        $this->matcher = $matcher;
         $this->menuManipulator = new MenuManipulator();
     }
 
@@ -60,6 +74,21 @@ class Helper
                 throw new \LogicException(sprintf('The menu "%s" exists, but is not a valid menu item object. Check where you created the menu to be sure it returns an ItemInterface object.', $menuName));
             }
         }
+
+        $treeIterator = new RecursiveIteratorIterator(
+                new RecursiveItemIterator(
+                new ArrayIterator(array($menu))
+                ), RecursiveIteratorIterator::SELF_FIRST
+        );
+
+        $iterator = new CurrentItemFilterIterator($treeIterator, $this->matcher);
+
+        $iterator->rewind();
+
+        $menu = $iterator->current();
+
+        $menu->setCurrent(true);
+
 
         return $this->menuManipulator->getBreadcrumbsArray($menu);
     }
@@ -97,5 +126,4 @@ class Helper
 
         return $this->rendererProvider->get($renderer)->render($menu, $options);
     }
-
 }
