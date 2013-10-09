@@ -1,6 +1,6 @@
 <?php
 
-namespace Cnerta\BreadcrumbBundle;
+namespace Cnerta\BreadcrumbBundle\Twig;
 
 use Knp\Menu\ItemInterface;
 
