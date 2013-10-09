@@ -6,13 +6,36 @@
 
     
     <parameters>
-        <parameter key="cnerta_breadcrumb.twig.extension.class">Cnerta\BreadcrumbBundle\Twig\MenuExtension</parameter>
+        <parameter key="cnerta_breadcrumb.twig.extension.class">Cnerta\BreadcrumbBundle\Twig\BreadcrumbExtension</parameter>
+        <parameter key="cnerta_breadcrumb.twig.helper.class">Cnerta\BreadcrumbBundle\Twig\Helper</parameter>
+        <parameter key="cnerta_breadcrumb.renderer.twig.class">Cnerta\BreadcrumbBundle\Renderer\TwigRenderer</parameter>
+        <parameter key="cnerta_breadcrumb.renderer_provider.class">Cnerta\BreadcrumbBundle\Renderer\ContainerAwareProvider</parameter>
+        <parameter key="cnerta_breadcrumb.renderer.twig.options" type="collection"></parameter>
     </parameters>
 
     <services>
+        <service id="cnerta_breadcrumb.helper" class="%cnerta_breadcrumb.twig.helper.class%">
+            <argument type="service" id="cnerta_breadcrumb.renderer_provider" />
+            <argument type="service" id="knp_menu.menu_provider" />
+        </service>
+
         <service id="cnerta_breadcrumb.twig.extension" class="%cnerta_breadcrumb.twig.extension.class%">
             <tag name="twig.extension" />
-            <argument type="service" id="knp_menu.helper" />
+            <argument type="service" id="cnerta_breadcrumb.helper" />
+        </service>
+
+        <service id="cnerta_breadcrumb.renderer.twig" class="%cnerta_breadcrumb.renderer.twig.class%">
+            <tag name="cnerta_breadcrumb.renderer" alias="twig" />
+            <argument type="service" id="twig" />
+            <argument>%cnerta_breadcrumb.renderer.twig.template%</argument>
+            <argument type="service" id="knp_menu.matcher" />
+            <argument>%cnerta_breadcrumb.renderer.twig.options%</argument>
+        </service>
+
+        <service id="cnerta_breadcrumb.renderer_provider" class="%cnerta_breadcrumb.renderer_provider.class%">
+            <argument type="service" id="service_container" />
+            <argument>%cnerta_breadcrumb.default_renderer%</argument>
+            <argument type="collection" />
         </service>
     </services>
     

@@ -5,6 +5,7 @@ namespace Cnerta\BreadcrumbBundle\Twig;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Renderer\RendererProviderInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
+use Knp\Menu\Util\MenuManipulator;
 
 /**
  * Helper class containing logic to retrieve and render breadcrumb from templating engines
@@ -12,8 +13,14 @@ use Knp\Menu\Provider\MenuProviderInterface;
  */
 class Helper
 {
+
     private $rendererProvider;
     private $menuProvider;
+
+    /**
+     * @var \Knp\Menu\Util\MenuManipulator
+     */
+    protected $menuManipulator;
 
     /**
      * @param RendererProviderInterface  $rendererProvider
@@ -23,10 +30,11 @@ class Helper
     {
         $this->rendererProvider = $rendererProvider;
         $this->menuProvider = $menuProvider;
+        $this->menuManipulator = new MenuManipulator();
     }
 
     /**
-     * Retrieves item in the menu, eventually using the menu provider.
+     * Renders an array ready to be used for breadcrumbs.
      *
      * @param ItemInterface|string $menu
      * @param array                $path
@@ -53,18 +61,11 @@ class Helper
             }
         }
 
-        foreach ($path as $child) {
-            $menu = $menu->getChild($child);
-            if (null === $menu) {
-                throw new \InvalidArgumentException(sprintf('The menu has no child named "%s"', $child));
-            }
-        }
-
-        return $menu;
+        return $this->menuManipulator->getBreadcrumbsArray($menu);
     }
 
     /**
-     * Renders a menu with the specified renderer.
+     * Renders a breadcrumb with the specified renderer.
      *
      * If the argument is an array, it will follow the path in the tree to
      * get the needed item. The first element of the array is the whole menu.
@@ -79,7 +80,7 @@ class Helper
      *
      * @throws \InvalidArgumentException
      */
-    public function render($menu, array $options = array(), $renderer =  null)
+    public function render($menu, array $options = array(), $renderer = null)
     {
         if (!$menu instanceof ItemInterface) {
             $path = array();
@@ -96,4 +97,5 @@ class Helper
 
         return $this->rendererProvider->get($renderer)->render($menu, $options);
     }
+
 }

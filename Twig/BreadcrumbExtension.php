@@ -4,7 +4,7 @@ namespace Cnerta\BreadcrumbBundle\Twig;
 
 use Knp\Menu\ItemInterface;
 
-class MenuExtension extends \Twig_Extension
+class BreadcrumbExtension extends \Twig_Extension
 {
     private $helper;
 

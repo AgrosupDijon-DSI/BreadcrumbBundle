@@ -24,5 +24,10 @@ class CnertaBreadcrumbExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $container->setParameter('cnerta_breadcrumb.renderer.twig.template', $config['twig']['template']);
+        
+        $container->setParameter('cnerta_breadcrumb.default_renderer', $config['default_renderer']);
+
     }
 }

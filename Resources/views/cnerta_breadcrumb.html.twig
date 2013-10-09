@@ -1,0 +1,7 @@
+{% block root %}
+{% for item in items %}
+    {% if loop.index > 1 %} &gt; {% endif %}
+    {% if not loop.last %}<a href="{{ item.uri }}">{{ item.label }}</a>
+    {% else %}<span>{{ item.label }}</span>{% endif %}   
+{% endfor %}
+{% endblock root %}
