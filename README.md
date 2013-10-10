@@ -33,7 +33,6 @@ Install the Bundle
     );
 ```
 
-
 Default configuration
 ---------------------
 You don't have to configure anything. This part is only usefull if you want to setup a default breadcrump template.
