@@ -85,10 +85,11 @@ class Helper
 
         $iterator->rewind();
 
-        $menu = $iterator->current();
+        if($iterator->valid()) {
+            $menu = $iterator->current();
 
-        $menu->setCurrent(true);
-
+            $menu->setCurrent(true);
+        }
 
         return $this->menuManipulator->getBreadcrumbsArray($menu);
     }
