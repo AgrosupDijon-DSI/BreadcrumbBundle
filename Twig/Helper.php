@@ -83,8 +83,6 @@ class Helper
 
         $iterator = new CurrentItemFilterIterator($treeIterator, $this->matcher);
 
-        $iterator->rewind();
-
         if($iterator->valid()) {
             $menu = $iterator->current();
 

@@ -10,6 +10,7 @@
         <parameter key="cnerta_breadcrumb.twig.helper.class">Cnerta\BreadcrumbBundle\Twig\Helper</parameter>
         <parameter key="cnerta_breadcrumb.renderer.twig.class">Cnerta\BreadcrumbBundle\Renderer\TwigRenderer</parameter>
         <parameter key="cnerta_breadcrumb.renderer_provider.class">Cnerta\BreadcrumbBundle\Renderer\ContainerAwareProvider</parameter>
+        <parameter key="cnerta_breadcrumb.route_voter.class">Cnerta\BreadcrumbBundle\Voter\RouteVoter</parameter>
         <parameter key="cnerta_breadcrumb.renderer.twig.options" type="collection"></parameter>
     </parameters>
 
@@ -38,6 +39,11 @@
             <argument>%cnerta_breadcrumb.default_renderer%</argument>
             <argument type="collection" />
         </service>
+
+        <service id="knp_menu.voter.router" class="%cnerta_breadcrumb.route_voter.class%">
+            <tag name="knp_menu.voter" request="true" />
+        </service>
+
     </services>
     
 </container>
