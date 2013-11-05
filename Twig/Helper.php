@@ -70,6 +70,7 @@ class Helper
             $menuName = $menu;
             $menu = $this->menuProvider->get($menuName, $options);
 
+
             if (!$menu instanceof ItemInterface) {
                 throw new \LogicException(sprintf('The menu "%s" exists, but is not a valid menu item object. Check where you created the menu to be sure it returns an ItemInterface object.', $menuName));
             }
@@ -83,13 +84,17 @@ class Helper
 
         $iterator = new CurrentItemFilterIterator($treeIterator, $this->matcher);
 
-        if($iterator->valid()) {
-            $menu = $iterator->current();
+        $iterator->rewind();
 
-            $menu->setCurrent(true);
+        if($iterator->valid()) {
+            $current= $iterator->current();
+            $current->setCurrent(true);
+        } else {
+            // Set Current as an empty Item in order to avoid exceptions on knp_menu_get
+            $current = new MenuItem('', new MenuFactory());
         }
 
-        return $this->menuManipulator->getBreadcrumbsArray($menu);
+        return $this->menuManipulator->getBreadcrumbsArray($current);
     }
 
     /**
