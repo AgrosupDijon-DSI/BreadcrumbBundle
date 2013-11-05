@@ -70,7 +70,6 @@ class Helper
             $menuName = $menu;
             $menu = $this->menuProvider->get($menuName, $options);
 
-
             if (!$menu instanceof ItemInterface) {
                 throw new \LogicException(sprintf('The menu "%s" exists, but is not a valid menu item object. Check where you created the menu to be sure it returns an ItemInterface object.', $menuName));
             }

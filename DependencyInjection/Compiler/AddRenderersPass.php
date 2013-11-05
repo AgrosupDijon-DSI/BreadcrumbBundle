@@ -17,6 +17,7 @@ class AddRenderersPass implements CompilerPassInterface
         $definition = $container->getDefinition('cnerta_breadcrumb.renderer_provider');
 
         $renderers = array();
+        
         foreach ($container->findTaggedServiceIds('cnerta_breadcrumb.renderer') as $id => $tags) {
             foreach ($tags as $attributes) {
                 if (empty($attributes['alias'])) {
@@ -25,7 +26,6 @@ class AddRenderersPass implements CompilerPassInterface
                 $renderers[$attributes['alias']] = $id;
             }
         }
-
         $definition->replaceArgument(2, $renderers);
     }
 }
