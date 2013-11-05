@@ -16,7 +16,7 @@ Install the Bundle
     "repositories": [
         {
             "type": "git",
-            "url": "git@github.com:AgrosupDijon-Eduter/BreadcrumBundle.git",
+            "url": "git@github.com:AgrosupDijon-Eduter/BreadcrumbBundle.git",
             "branch": "master"
         }
     ]
@@ -35,7 +35,7 @@ Install the Bundle
 
 Default configuration
 ---------------------
-You don't have to configure anything. This part is only usefull if you want to setup a default breadcrump template.
+You don't have to configure anything. This part is only usefull if you want to setup a default breadcrumb template.
 
 config.yml
 
