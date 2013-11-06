@@ -11,6 +11,8 @@ use Knp\Menu\Provider\MenuProviderInterface;
 use Knp\Menu\Iterator\CurrentItemFilterIterator;
 use Knp\Menu\Util\MenuManipulator;
 use Knp\Menu\Matcher\Matcher;
+use Knp\Menu\MenuFactory;
+use Knp\Menu\MenuItem;
 
 
 /**
