@@ -3,6 +3,8 @@ CnertaBreadcrumbBundle
 
 The CnertaBreadcrumbBundle provide an easy way to create a breadcrumb with [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for Symfony2
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/74030a1e-6b96-4eb0-b34e-cad8cf6b640c/big.png)](https://insight.sensiolabs.com/projects/74030a1e-6b96-4eb0-b34e-cad8cf6b640c)
+
 Install the Bundle
 ------------------
 
