@@ -15,7 +15,7 @@
         }
     ],
     "require":      {
-        "knplabs/knp-menu-bundle": "master",
+        "knplabs/knp-menu-bundle": "1.1.*",
         "symfony/framework-bundle": "~2.0"
     },
     "autoload":     {
