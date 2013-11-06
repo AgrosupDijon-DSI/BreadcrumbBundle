@@ -53,16 +53,14 @@ class Helper
      * Renders an array ready to be used for breadcrumbs.
      *
      * @param ItemInterface|string $menu
-     * @param array                $path
      * @param array                $options
      *
      * @return ItemInterface
      *
      * @throws \BadMethodCallException   when there is no menu provider and the menu is given by name
      * @throws \LogicException
-     * @throws \InvalidArgumentException when the path is invalid
      */
-    public function get($menu, array $path = array(), array $options = array())
+    public function get($menu, array $options = array())
     {
         if (!$menu instanceof ItemInterface) {
             if (null === $this->menuProvider) {
