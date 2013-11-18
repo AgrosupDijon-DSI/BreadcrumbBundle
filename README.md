@@ -17,15 +17,8 @@ Install the Bundle
 ```json
      "require": {
         // ...
-        "cnerta/breadcrumb-bundle": "master"
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:AgrosupDijon-Eduter/BreadcrumbBundle.git",
-            "branch": "master"
-        }
-    ]
+        "cnerta/breadcrumb-bundle": "1.0.*"
+    }
 ```
 
 2. Then add it to your AppKernel class::
