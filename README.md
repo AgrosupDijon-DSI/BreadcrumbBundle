@@ -72,3 +72,16 @@ If you want to use your own template for rendering  :
 ```jinja
     {{ cnerta_breadcrumb_render('MyWonderfullBundle:Builder:Menu', {'template': 'MyWonderfullBundle:Breadcrumb:myBreadcrumb.html.twig'}) }}
 ```
+
+Unit test the Bundle
+--------------------
+Before running phpunit you must load dependencies.
+This will only load the required vendors needed for run test.
+```bash
+     composer install --dev
+```
+
+After that you can run phpunit.
+```bash
+      phpunit -c phpunit.xml.dist
+```
