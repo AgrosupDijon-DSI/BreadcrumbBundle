@@ -93,7 +93,12 @@ class Helper
             $current = new MenuItem('', new MenuFactory());
         }
 
-        return $this->menuManipulator->getBreadcrumbsArray($current);
+        $this->removeRootNode($this->menuManipulator->getBreadcrumbsArray($current));
+        
+   
+        return $this->removeRootNode(
+                $this->menuManipulator->getBreadcrumbsArray($current)
+                );
     }
 
     /**
@@ -128,5 +133,26 @@ class Helper
         }
 
         return $this->rendererProvider->get($renderer)->render($menu, $options);
+    }
+    
+    /**
+     * In the new version of Knp/MenuBundle getBreadcrumbsArray return an array
+     * who start with a root node. So this methode will remove this node who is
+     * useless (at this time) for this bundle.
+     * 
+     * @param array $menuItemList
+     * @return \Knp\Menu\MenuItem
+     */
+    private function removeRootNode(Array $menuItemList)
+    {
+        // Just to be sure, Who noze
+        if($menuItemList[0]['label'] == 'root' 
+                && $menuItemList[0]['item'] instanceof MenuItem 
+                && $menuItemList[0]['item']->getParent() == null)
+        {
+            return array_slice($menuItemList, 1);
+        }
+        
+        return $menuItemList;
     }
 }
