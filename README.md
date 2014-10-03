@@ -17,7 +17,7 @@ Install the Bundle
 ```json
      "require": {
         // ...
-        "cnerta/breadcrumb-bundle": "1.0.*"
+        "cnerta/breadcrumb-bundle": "2.0.*"
     }
 ```
 
