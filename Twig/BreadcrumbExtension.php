@@ -19,8 +19,8 @@ class BreadcrumbExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'cnerta_breadcrumb_get' => new \Twig_Function_Method($this, 'get'),
-            'cnerta_breadcrumb_render' => new \Twig_Function_Method($this, 'render', array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('cnerta_breadcrumb_get', array($this, 'get')),
+            new \Twig_SimpleFunction('cnerta_breadcrumb_render', array($this, 'render'), array('is_safe' => array('html'))),
         );
     }
 
