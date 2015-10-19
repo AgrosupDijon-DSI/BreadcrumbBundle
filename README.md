@@ -1,7 +1,9 @@
 CnertaBreadcrumbBundle
 ======================
 
-The CnertaBreadcrumbBundle provide an easy way to create a breadcrumb with [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for Symfony2
+The CnertaBreadcrumbBundle provide an easy way to create a breadcrumb with [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for Symfony2.
+
+If you want to take a look, this Symfony2 app is my Sandbox, [DemoMenu](https://github.com/waldo2188/DemoMenu).
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/74030a1e-6b96-4eb0-b34e-cad8cf6b640c/big.png)](https://insight.sensiolabs.com/projects/74030a1e-6b96-4eb0-b34e-cad8cf6b640c)
 
@@ -17,7 +19,7 @@ Install the Bundle
 ```json
      "require": {
         // ...
-        "cnerta/breadcrumb-bundle": "2.0.*"
+        "cnerta/breadcrumb-bundle": "2.1.*"
     }
 ```
 
@@ -57,7 +59,7 @@ Next, in your twig template call :
 Or if you just want to get the breadcrumb array and make your stuff : 
 ```jinja
     {% set currentItem = cnerta_breadcrumb_get('MyWonderfullBundle:Builder:Menu') %}
-    {# some crasy stuff #}
+    {# some crazy stuff #}
     {% for item in currentItem %}
         {% if loop.index != 1 %}
             {% if loop.index > 1 %} &gt; {% endif %}
@@ -83,5 +85,5 @@ This will only load the required vendors needed for run test.
 
 After that you can run phpunit.
 ```bash
-      phpunit -c phpunit.xml.dist
+      ./vendor/bin/phpunit -c phpunit.xml.dist
 ```
