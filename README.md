@@ -87,3 +87,9 @@ After that you can run phpunit.
 ```bash
       ./vendor/bin/phpunit -c phpunit.xml.dist
 ```
+
+Changelog
+---------
+
+### Version 2.1.0 (2015/10/19)
+ - [#4](https://github.com/AgrosupDijon-Eduter/BreadcrumbBundle/issues/4) Remove an unnecessary function who remove a node labeled "root"
