@@ -1,7 +1,7 @@
 {
     "name":         "cnerta/breadcrumb-bundle",
-    "description":  "This bundle provides a breadcrumb for the KnpMenu library",
-    "keywords":     ["menu"],
+    "description":  "The CnertaBreadcrumbBundle, for Symfony2, provide an easy way to create a breadcrumb with KnpMenuBundle",
+    "keywords":     ["breadcrumbs","symfony2","knpmenu"],
     "type":         "symfony-bundle",
     "license":      "MIT",
     "authors":      [
