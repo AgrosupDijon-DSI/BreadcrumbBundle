@@ -1,3 +1,5 @@
+# /!\ Repository not maintained and outdated /!\
+
 CnertaBreadcrumbBundle
 ======================
 
